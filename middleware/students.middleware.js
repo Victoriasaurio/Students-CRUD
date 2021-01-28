@@ -10,6 +10,23 @@ function validate(body) {
     return ok
 }
 
+// Devuelve un TRUE cuando el valor no es un número.
+const validateId = (id) => !isNaN(id)
+
+function validateIdDB(id, data) {
+    let ok = false
+    let user = data[0]
+    for (let i=0; i < user.length; i++) {
+        let userId = user[i].id // Obtiene el id del usuario
+        if(userId == id) {
+            ok = true
+        }
+    }
+    return ok
+}
+
 module.exports = {
-    validate
+    validate,
+    validateId,
+    validateIdDB
 }
