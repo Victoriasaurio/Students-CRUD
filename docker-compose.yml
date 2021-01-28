@@ -2,7 +2,7 @@ version: '3'
 
 services:
   api:
-    container_name: ${DB_DATABASE}-api
+    container_name: ${DB_DATABASE}-api-${DB_NAME}
     restart: unless-stopped
     build: 
       dockerfile: ./dockerfile
@@ -11,13 +11,14 @@ services:
       - .:/usr/src/app
     ports:
       - ${PORT}:${PORT}
-    command: npm run start
+    command: npm run dev
     depends_on: 
       - db
   db: 
     volumes:
       - "./.mysql-data/db:/var/lib/mysql"
     image: mysql:5.6
+    container_name: ${DB_DATABASE}-mysql-${DB_NAME}
     restart: unless-stopped
     ports:
       - 3306:3306
@@ -28,7 +29,7 @@ services:
       MYSQL_PASSWORD: ${DB_PASS}
   adminer:
     image: adminer
-    container_name: ${DB_DATABASE}-adminer
+    container_name: ${DB_DATABASE}-adminer-${DB_NAME}
     restart: unless-stopped
     depends_on: 
       - db
