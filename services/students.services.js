@@ -13,13 +13,13 @@ async function postStudents(body) {
 }
 
 async function putStudents(id, body) {
-    let sql = `UPDATE students SET name='${body.name}', lastname='${body.lastname}' WHERE id=${id.id}`
+    let sql = `UPDATE students SET name='${body.name}', lastname='${body.lastname}' WHERE id=${id}`
     let data = await exec.execute(sql)
     return data
 }
 
 async function deleteStudents(id) {
-    let sql = `DELETE FROM students WHERE id=${id.id}`
+    let sql = `DELETE FROM students WHERE id=${id}`
     let data = await exec.execute(sql)
     return data
 }
