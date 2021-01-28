@@ -1,5 +1,12 @@
 ## CRUD OF STUDENTS
 This little CRUD contains the basic HTTP requests of the students path. <br>
+### REQUIREMENTS
+Have installed -
+- NodeJS
+- Docker
+- Docker-Compose
+- MySQL 
+
 To install all dependencies you must run
 ```
 npm i
@@ -22,10 +29,14 @@ However,  `npm run dev`  requires nodemon, which can be installed globally by ru
 ```
 npm i -g nodemon
 ```
+other way to install `nodemon` is 
+```
+npm install nodemon -D
+```
 ### CRUD EXAMPLE 
 #### GET
 ```
-http://localhost:3500/v1/students
+http://localhost:3000/v1/students
 ```
 ```json
 {
@@ -52,7 +63,7 @@ http://localhost:3500/v1/students
 ```
 #### POST
 ```
-http://localhost:3500/v1/students
+http://localhost:3000/v1/students
 ```
 ```json
 {
@@ -70,9 +81,9 @@ http://localhost:3500/v1/students
 }
 ```
 #### UPDATE
-[]('/img/update.png')
+
 ```
-http://localhost:3500/v1/students/15
+http://localhost:3000/v1/students/15
 ```
 ```json
 {
@@ -89,10 +100,10 @@ http://localhost:3500/v1/students/15
     }
 }
 ```
-[]('/img/update-after.png')
+
 #### DELETE
 ```
-http://localhost:3500/v1/students/21
+http://localhost:3000/v1/students/21
 ```
 ```json
 {
@@ -103,7 +114,22 @@ http://localhost:3500/v1/students/21
     }
 }
 ```
-[]('/img/delete.png')
 
-## USING DOCKER
-Docker compose `sudo docker-compose up`
+## USING DOCKER-COMPOSE
+To generate the containers you need to run, in this case 3 containers will be created:
+```
+sudo docker-compose up
+```
+Make the necessary changes considering the .env file. With the shortcut CTRL + C you stop the containers without deleting them.
+
+## USING TEST
+Have installed - <br>
+- Jest
+- Supertest
+To install this dependencies you must use `npm install jest -D` and `npm install supertest -D`
+
+To run our tests we must execute the command:
+```
+npm test
+```
+Thanks to the script we have in the package.json
